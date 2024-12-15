@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styles_sign.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-form">
+      <h2>Sign Up</h2>
+      <form action="#" method="POST">
+        <!-- Name Input -->
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+
+        <!-- Username Input -->
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required placeholder="Create a username">
+        </div>
+
+        <!-- Password Input -->
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Create a password">
+        </div>
+
+        <!-- Sign Up Button -->
+        <button type="submit" class="btn">Sign Up</button>
+
+        <div class="links">
+          <a href="login.html" class="signup-link">Already have an account? Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- JavaScript for form handling -->
+  <script>
+    // Function to handle form submission
+    function handleSubmit(event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Get the user details from the form
+      const name = document.getElementById('name').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Check if any of the fields are empty
+      if (!name || !username || !password) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      // Save user details to localStorage (you could also use sessionStorage)
+      const userDetails = { name, username, password };
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+      // Optional: Show a message that the user has been successfully registered
+      alert("Sign up successful! Redirecting to home page...");
+
+      // Redirect the user to the home page
+      window.location.href = "login.html"; // Adjust the path as needed
+    }
+
+    // Add event listener for form submission
+    document.querySelector("form").addEventListener("submit", handleSubmit);
+  </script>
+</body>
+</html>
